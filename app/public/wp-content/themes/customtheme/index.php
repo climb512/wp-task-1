@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package YourThemeName
+ * @package Custom Theme
  */
 
 get_header();
@@ -37,7 +37,7 @@ get_header();
             <?php endwhile;
         else :
             ?>
-            <p><?php esc_html_e('No posts found.', 'your-theme-name'); ?></p>
+            <p><?php esc_html_e('No posts found.', 'custom-theme'); ?></p>
         <?php endif; ?>
     </div><!-- .container -->
 </main><!-- #primary -->

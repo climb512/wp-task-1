@@ -10,3 +10,47 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: customtheme
 Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
 */
+#primary {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-area {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-list {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+}
+
+.grid-item {
+    position: relative;
+    margin: -2px;
+}
+
+.caption {
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    left: 20px;
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    max-width: 100%;
+}
+
+#footer {
+    background-color: #4C5253;
+    color: #FFFFFF;
+    padding: 20px;
+}

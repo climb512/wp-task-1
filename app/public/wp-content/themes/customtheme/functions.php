@@ -12,7 +12,16 @@
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
 
+// Make the "featured image" option available
 add_theme_support('post-thumbnails');
+
+// Enqueue the main stylesheet
+function theme_styles()
+{
+    wp_enqueue_style('style', get_stylesheet_uri());
+}
+
+add_action('wp_enqueue_scripts', 'theme_styles');
 
 // Register Custom Post Type
 function create_project_post_type()

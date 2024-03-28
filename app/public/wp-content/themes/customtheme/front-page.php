@@ -19,13 +19,12 @@ get_header();
         </section>
 
         <section class="featured-posts">
-            <h2>Featured Posts</h2>
+            <h2>Projects</h2>
             <?php
-            // Example: Displaying featured posts.
+            // Example: Displaying most recent projects.
             $args = array(
-                'post_type'      => 'post',
+                'post_type'      => 'project', // slug of the custom post type
                 'posts_per_page' => 3, // Adjust the number of posts to display.
-                'category_name'  => 'featured' // Specify the category for featured posts.
             );
             $query = new WP_Query($args);
 

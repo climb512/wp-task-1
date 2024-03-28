@@ -49,6 +49,15 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
     max-width: 100%;
 }
 
+/* ---- Single Project ---- */
+.banner {
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+
 #footer {
     background-color: #4C5253;
     color: #FFFFFF;

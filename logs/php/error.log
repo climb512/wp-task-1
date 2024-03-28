@@ -6,3 +6,11 @@
 [22-Mar-2024 11:25:13 UTC] PHP Warning:  Attempt to read property "title" on null in C:\Users\COM\Local Sites\wp-task-1\app\public\wp-includes\class-wp-customize-widgets.php on line 905
 [22-Mar-2024 15:46:42 UTC] PHP Warning:  Attempt to read property "title" on null in C:\Users\COM\Local Sites\wp-task-1\app\public\wp-includes\class-wp-customize-widgets.php on line 905
 [22-Mar-2024 16:07:01 UTC] PHP Parse error:  syntax error, unexpected identifier "template", expecting ")" in C:\Users\COM\Local Sites\wp-task-1\app\public\wp-content\themes\customtheme\archive-project.php on line 33
+[28-Mar-2024 07:31:02 UTC] PHP Warning:  file_put_contents(C:\Users\COM\Local Sites\wp-task-1\app\public/wp-content/themes/customtheme/acf-json/group_66051c36ab121.json): Failed to open stream: No such file or directory in C:\Users\COM\Local Sites\wp-task-1\app\public\wp-content\plugins\advanced-custom-fields\includes\local-json.php on line 448
+[28-Mar-2024 10:51:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_breadcrumbs() in C:\Users\COM\Local Sites\wp-task-1\app\public\wp-content\themes\customtheme\single-project.php:33
+Stack trace:
+#0 C:\Users\COM\Local Sites\wp-task-1\app\public\wp-includes\template-loader.php(106): include()
+#1 C:\Users\COM\Local Sites\wp-task-1\app\public\wp-blog-header.php(19): require_once('C:\\Users\\COM\\Lo...')
+#2 C:\Users\COM\Local Sites\wp-task-1\app\public\index.php(17): require('C:\\Users\\COM\\Lo...')
+#3 {main}
+  thrown in C:\Users\COM\Local Sites\wp-task-1\app\public\wp-content\themes\customtheme\single-project.php on line 33

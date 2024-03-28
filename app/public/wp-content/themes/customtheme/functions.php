@@ -57,7 +57,7 @@ function create_project_post_type()
     );
     $args = array(
         'label'                 => __('Project', 'custom-theme'),
-        'description'           => __('Post Type Description', 'custom-theme'),
+        'description'           => __('Our Projects', 'custom-theme'),
         'labels'                => $labels,
         'supports'              => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'comments'),
         'taxonomies'            => array('category', 'post_tag'),

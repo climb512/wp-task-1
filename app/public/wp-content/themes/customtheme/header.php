@@ -21,7 +21,11 @@
             </div><!-- .site-branding -->
 
             <nav id="site-navigation" class="main-navigation">
+
                 <?php
+                $projects_archive_link = get_post_type_archive_link('project');
+                echo '<a href="' . esc_url($projects_archive_link) . '">View All Projects</a>';
+
                 wp_nav_menu(
                     array(
                         'theme_location' => 'primary',

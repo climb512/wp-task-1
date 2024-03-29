@@ -19,7 +19,6 @@ if ($category_id) {
 }
 
 $query = new WP_Query($args);
-
 ?>
 
 <div id="primary" class="content-area">
@@ -37,10 +36,14 @@ $query = new WP_Query($args);
                 // Start the Loop.
                 while ($query->have_posts()) :
                     $query->the_post();
-                    // Display post content here
                 ?>
-                    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                    <div><?php the_content(); ?></div>
+
+                    <figure class="grid-item">
+                        <a href="<?php the_permalink() ?>">
+                            <?php the_post_thumbnail(array(285, 285)) ?>
+                            <figcaption class="caption"><span><?php the_title() ?></span></figcaption>
+                        </a>
+                    </figure>
                 <?php
                 endwhile;
                 wp_reset_postdata();

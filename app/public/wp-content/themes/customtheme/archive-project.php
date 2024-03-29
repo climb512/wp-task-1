@@ -60,10 +60,6 @@ get_header(); ?>
     </main><!-- #main -->
 
 </div><!-- #primary -->
-<!-- <aside class="sidebar">
-    <?php
-    get_sidebar();
-    ?>
-</aside> #sidebar -->
+
 <?php
 get_footer();

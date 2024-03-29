@@ -79,3 +79,26 @@ function create_project_post_type()
     register_post_type('project', $args);
 }
 add_action('init', 'create_project_post_type', 0);
+
+// This creates a 'Menus' item under 'Appearance' in the WP Admin
+// Alternately, we could leave it out and edit the menu under Appearance->Customize->Menes
+function wpb_custom_new_menu()
+{
+    register_nav_menu('header-menu', __('Header Menu'));
+}
+add_action('init', 'wpb_custom_new_menu');
+
+// // Filter my Projects post type query by tag
+// function custom_post_type_taxonomy_filter($query)
+// {
+//     if (!is_admin() && $query->is_main_query() && $query->is_post_type_archive('project')) {
+//         $query->set('tax_query', array(
+//             array(
+//                 'taxonomy' => 'post_tag', // 'category' or 'post_tag'
+//                 'field'    => 'slug', // change 'slug' to 'id' if you're using category/tag IDs instead
+//                 'terms'    => 'red',
+//             ),
+//         ));
+//     }
+// }
+// add_action('pre_get_posts', 'custom_post_type_taxonomy_filter');

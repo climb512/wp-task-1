@@ -13,10 +13,26 @@ get_header();
 
 <main id="primary" class="site-main">
     <div class="container">
-        <section class="hero-section">
+        <!-- <section class="hero-section">
             <h1>Welcome to Custom Theme</h1>
             <p>This is a custom homepage created for your WordPress theme, using the front-page.php template.</p>
-        </section>
+        </section> -->
+
+        <!-- Image -->
+        <?php
+        // Get the regular featured image
+        $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
+
+        // Get the custom fields
+        $banner_image = get_field('banner'); // Field created using ACF
+
+        // Use the banner image if it's set, otherwise fallback to the regular featured image
+        $image_url = !empty($banner_image) ? $banner_image : $featured_image;
+        ?>
+
+        <div class="banner">
+            <img src="<?php echo esc_url($image_url); ?>" width="100%" alt="Banner Image">
+        </div>
 
         <section class="featured-posts">
             <h2>Projects</h2>

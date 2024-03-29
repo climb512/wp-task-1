@@ -10,6 +10,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: customtheme
 Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
 */
+
+body {
+    background-color: #f3f6f6;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
 #primary {
     display: flex;
     justify-content: space-between;
@@ -49,6 +57,31 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
     max-width: 100%;
 }
 
+/* ---- Header ---- */
+.header-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.menu-container>ul {
+    list-style: none;
+}
+
+.menu-container>ul>li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-container>ul {
+    list-style: none;
+}
+
+.social-container>ul>li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
 /* ---- Single Project ---- */
 .banner {
     width: 100%;
@@ -57,7 +90,20 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
     grid-template-columns: 1fr;
 }
 
+/* Define column layout */
+.content-container {
+    display: flex;
+}
 
+.content-column {
+    width: 50%;
+    padding: 20px;
+}
+
+/* Optional: Add some basic styling */
+
+
+/* ---- Footer ---- */
 #footer {
     background-color: #4C5253;
     color: #FFFFFF;

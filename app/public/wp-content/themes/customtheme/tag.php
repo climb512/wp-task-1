@@ -40,7 +40,7 @@ $query = new WP_Query($args);
 
             <h1 class="page-title"><?php _e('Tag: ' . $tag_name, 'custom-theme'); ?></h1>
 
-            <div class="project-list">
+            <div id="project-list">
 
                 <?php
                 // Start the Loop.
@@ -58,7 +58,7 @@ $query = new WP_Query($args);
                 endwhile;
                 wp_reset_postdata();
                 ?>
-            </div><!-- .project-list -->
+            </div><!-- #project-list -->
 
         <?php
             // Previous/next page navigation.

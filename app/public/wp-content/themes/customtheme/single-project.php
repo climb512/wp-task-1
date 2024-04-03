@@ -1,16 +1,21 @@
 <?php
 
 /**
- * The template for displaying archive pages for the custom post type "Project".
+ * The template for displaying single pages for the custom post type "Project".
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Custom_Theme
  */
 
-get_header(); ?>
+get_header();
+?>
 
 <div id="primary" class="content-area">
+
+    <!-- Container to hold project list when retrieved by AJAX -->
+    <div id="project-list"></div>
+
     <main id="main" class="site-main">
         <!-- Image -->
         <?php
@@ -71,11 +76,8 @@ get_header(); ?>
             </div><!-- .project-details -->
         </div><!-- .contnet-container -->
 
+    </main><!-- #main -->
+</div><!-- #primary -->
 
-    </main>
-</div>
-
-<footer>
-    <!-- Footer content goes here -->
-    <p>&copy; <?php echo date("Y"); ?> Your Website</p>
-</footer>
+<?php
+get_footer();

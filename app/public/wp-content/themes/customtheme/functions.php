@@ -16,16 +16,24 @@ defined('ABSPATH') || exit;
 add_theme_support('post-thumbnails');
 
 // Enqueue the main stylesheet
-function theme_styles()
-{
+function theme_styles() {
     wp_enqueue_style('style', get_stylesheet_uri());
 }
-
 add_action('wp_enqueue_scripts', 'theme_styles');
 
+
+function theme_enqueue_scripts() {
+    // Enqueue the script
+    wp_enqueue_script('custom-script', get_template_directory_uri() . '/scripts.js', array('jquery'), '1.0', true);
+
+    // Pass additional data to the script, including the AJAX URL
+    wp_localize_script('custom-script', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
+
+
 // Register Custom Post Type
-function create_project_post_type()
-{
+function create_project_post_type() {
     $labels = array(
         'name'                  => _x('Projects', 'Post Type General Name', 'custom-theme'),
         'singular_name'         => _x('Project', 'Post Type Singular Name', 'custom-theme'),
@@ -55,6 +63,7 @@ function create_project_post_type()
         'items_list_navigation' => __('Projects list navigation', 'custom-theme'),
         'filter_items_list'     => __('Filter projects list', 'custom-theme'),
     );
+
     $args = array(
         'label'                 => __('Project', 'custom-theme'),
         'description'           => __('Our Projects', 'custom-theme'),
@@ -82,23 +91,86 @@ add_action('init', 'create_project_post_type', 0);
 
 // This creates a 'Menus' item under 'Appearance' in the WP Admin
 // Alternately, we could leave it out and edit the menu under Appearance->Customize->Menes
-function wpb_custom_new_menu()
-{
+function wpb_custom_new_menu() {
     register_nav_menu('header-menu', __('Header Menu'));
 }
 add_action('init', 'wpb_custom_new_menu');
 
-// // Filter my Projects post type query by tag
-// function custom_post_type_taxonomy_filter($query)
-// {
-//     if (!is_admin() && $query->is_main_query() && $query->is_post_type_archive('project')) {
-//         $query->set('tax_query', array(
-//             array(
-//                 'taxonomy' => 'post_tag', // 'category' or 'post_tag'
-//                 'field'    => 'slug', // change 'slug' to 'id' if you're using category/tag IDs instead
-//                 'terms'    => 'red',
-//             ),
-//         ));
-//     }
-// }
-// add_action('pre_get_posts', 'custom_post_type_taxonomy_filter');
+
+
+//**********************************************
+// AJAX
+
+function filter_projects_by_tag_callback() {
+    // Retrieve the tag ID sent via AJAX
+    $tag_id = isset($_POST['tag_id']) ? intval($_POST['tag_id']) : 0;
+
+    // Perform your query or any other processing based on the tag ID
+    $projects = get_posts(array(
+        'post_type' => 'project',
+        'posts_per_page' => -1,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'post_tag',
+                'field' => 'term_id',
+                'terms' => $tag_id,
+            ),
+        ),
+    ));
+
+    $project_data = array();
+    foreach ($projects as $project) {
+        $project_data[] = array(
+            'ID' => $project->ID,
+            'title' => $project->post_title,
+            'featured_image' => get_the_post_thumbnail_url($project->ID),
+        );
+    }
+
+    // Return the result to the AJAX request
+    echo json_encode($project_data);
+
+    // Always exit to avoid extra output
+    wp_die();
+}
+// AJAX handler function for logged-in users
+add_action('wp_ajax_filter_projects_by_tag', 'filter_projects_by_tag_callback');
+// AJAX handler function for non-logged-in users
+add_action('wp_ajax_nopriv_filter_projects_by_tag', 'filter_projects_by_tag_callback');
+
+function filter_projects_by_category_callback() {
+    // Retrieve the category ID sent via AJAX
+    $category_id = isset($_POST['category_id']) ? intval($_POST['category_id']) : 0;
+
+    // Perform your query or any other processing based on the tag ID
+    $projects = get_posts(array(
+        'post_type' => 'project',
+        'posts_per_page' => -1,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'category',
+                'field' => 'term_id',
+                'terms' => $category_id,
+            ),
+        ),
+    ));
+
+    $project_data = array();
+    foreach ($projects as $project) {
+        $project_data[] = array(
+            'ID' => $project->ID,
+            'title' => $project->post_title,
+            'featured_image' => get_the_post_thumbnail_url($project->ID),
+        );
+    }
+
+    // Return the result to the AJAX request
+    echo json_encode($project_data);
+
+    // Always exit to avoid extra output
+    wp_die();
+}
+// AJAX handler function for logged-in users
+add_action('wp_ajax_filter_projects_by_category', 'filter_projects_by_category_callback');
+// AJAX handler function for non-logged-in users
+add_action('wp_ajax_nopriv_filter_projects_by_category', 'filter_projects_by_category_callback');

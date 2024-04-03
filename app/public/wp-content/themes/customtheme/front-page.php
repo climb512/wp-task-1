@@ -11,6 +11,9 @@
 get_header();
 ?>
 
+<!-- Container to hold project list when retrieved by AJAX -->
+<div id="project-list"></div>
+
 <main id="primary" class="site-main">
     <div class="container">
         <!-- <section class="hero-section">

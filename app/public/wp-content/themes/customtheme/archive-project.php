@@ -18,7 +18,7 @@ get_header();
 
             <?php if (have_posts()) { ?>
 
-                <div class="project-list">
+                <div id="project-list">
 
                     <?php
                     // Start the Loop.
@@ -33,15 +33,9 @@ get_header();
                         </figure>
 
                     <?php
-                        /*
-                         * Include the Post-Format-specific template for the content.
-                         * If you want to customize this part further, create a file
-                         * called content-project.php and include it here.
-                         */
-                        get_template_part('template-parts/content', 'project');
                     }
                     ?>
-                </div><!-- .project-list -->
+                </div><!-- #project-list -->
 
             <?php
                 // Previous/next page navigation.

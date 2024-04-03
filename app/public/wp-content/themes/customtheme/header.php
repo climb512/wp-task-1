@@ -36,19 +36,13 @@
                 );
                 ?>
             </nav><!-- #site-navigation -->
-            <div class="social-container">
-                <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Youtube</a></li>
-                </ul>
-            </div><!-- .social-container -->
+
             <div class="category-chooser">
                 <?php
                 $categories = get_categories();
                 ?>
                 <div class="category-list">
-                    <h3>Categories</h3>
+                    <h3>Categories by link:</h3>
                     <ul>
                         <?php foreach ($categories as $category) : ?>
                             <li>
@@ -57,13 +51,21 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
-            </div>
+                <div class="ajax-category-container">
+                    <label for="select-list">Choose a category to retrieve by AJAX:</label>
+                    <select class="category-filter" onchange="fetchProjectsByCategory(this.value)">
+                        <?php foreach ($categories as $category) : ?>
+                            <option value="<?php echo esc_attr($category->term_id); ?>"><?php echo esc_html($category->name); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div><!-- .category-chooser -->
             <div class="tag-chooser">
                 <?php
                 $tags = get_tags();
                 ?>
                 <div class="tag-list">
-                    <h3>Tags</h3>
+                    <h3>Tags by link:</h3>
                     <ul>
                         <?php foreach ($tags as $tag) : ?>
                             <li>
@@ -72,6 +74,14 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
-            </div>
+                <div class="ajax-tag-container">
+                    <label for="select-list">Choose a tag to retrieve by AJAX:</label>
+                    <select class="tag-filter" onchange="fetchProjectsByTag(this.value)">
+                        <?php foreach ($tags as $tag) : ?>
+                            <option value="<?php echo esc_attr($tag->term_id); ?>"><?php echo esc_html($tag->name); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div><!-- .tag-chooser -->
         </div><!-- .container -->
     </header><!-- #masthead -->

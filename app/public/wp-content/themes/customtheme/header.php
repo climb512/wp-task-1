@@ -44,11 +44,11 @@
                 <div class="category-list">
                     <h3>Categories by link:</h3>
                     <ul>
-                        <?php foreach ($categories as $category) : ?>
+                        <?php foreach ($categories as $category) { ?>
                             <li>
                                 <a href="<?php echo esc_url(get_category_link($category->term_id)); ?>"><?php echo esc_html($category->name); ?></a>
                             </li>
-                        <?php endforeach; ?>
+                        <?php } ?>
                     </ul>
                 </div>
                 <div class="ajax-category-container">
@@ -75,11 +75,11 @@
                 <div class="tag-list">
                     <h3>Tags by link:</h3>
                     <ul>
-                        <?php foreach ($tags as $tag) : ?>
+                        <?php foreach ($tags as $tag) { ?>
                             <li>
                                 <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>"><?php echo esc_html($tag->name); ?></a>
                             </li>
-                        <?php endforeach; ?>
+                        <?php } ?>
                     </ul>
                 </div>
                 <div class="ajax-tag-container">

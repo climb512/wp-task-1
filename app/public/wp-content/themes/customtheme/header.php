@@ -54,6 +54,7 @@
                 <div class="ajax-category-container">
                     <label for="select-list">Choose a category to retrieve by AJAX:</label>
                     <select class="category-filter" onchange="fetchProjectsByCategory(this.value)">
+                        <option value="">Select a category</option> <!-- Default option -->
                         <?php foreach ($categories as $category) : ?>
                             <option value="<?php echo esc_attr($category->term_id); ?>"><?php echo esc_html($category->name); ?></option>
                         <?php endforeach; ?>
@@ -64,6 +65,7 @@
                 <?php
                 //$tags = get_tags();
 
+                // For the 'tags' dropdown, also show tags which have no associated post.
                 $tags = get_terms(array(
                     'taxonomy' => 'post_tag',
                     'hide_empty' => false, // Include tags with no posts
@@ -83,6 +85,7 @@
                 <div class="ajax-tag-container">
                     <label for="select-list">Choose a tag to retrieve by AJAX:</label>
                     <select class="tag-filter" onchange="fetchProjectsByTag(this.value)">
+                        <option value="">Select a tag</option> <!-- Default option -->
                         <?php foreach ($tags as $tag) : ?>
                             <option value="<?php echo esc_attr($tag->term_id); ?>"><?php echo esc_html($tag->name); ?></option>
                         <?php endforeach; ?>

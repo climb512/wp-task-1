@@ -31,12 +31,6 @@ body {
     gap: 0;
 }
 
-@media (max-width: 750px) {
-    #project-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 .grid-item {
     position: relative;
     margin: 0px;
@@ -67,6 +61,16 @@ body {
 .bold {
     font-weight: bold;
     color: maroon;
+}
+
+@media screen and (max-width: 750px) {
+    #project-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-container {
+        display: block !important;
+    }
 }
 
 /* ---- Header ---- */

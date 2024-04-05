@@ -62,7 +62,13 @@
             </div><!-- .category-chooser -->
             <div class="tag-chooser">
                 <?php
-                $tags = get_tags();
+                //$tags = get_tags();
+
+                $tags = get_terms(array(
+                    'taxonomy' => 'post_tag',
+                    'hide_empty' => false, // Include tags with no posts
+                ));
+
                 ?>
                 <div class="tag-list">
                     <h3>Tags by link:</h3>

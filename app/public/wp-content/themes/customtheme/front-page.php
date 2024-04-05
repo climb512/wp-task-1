@@ -16,12 +16,7 @@ get_header();
 
 <main id="primary" class="site-main">
     <div class="container">
-        <!-- <section class="hero-section">
-            <h1>Welcome to Custom Theme</h1>
-            <p>This is a custom homepage created for your WordPress theme, using the front-page.php template.</p>
-        </section> -->
 
-        <!-- Image -->
         <?php
         // Get the regular featured image
         $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'full');

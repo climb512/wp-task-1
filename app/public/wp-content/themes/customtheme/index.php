@@ -15,31 +15,44 @@
 get_header();
 ?>
 
+<!-- Container to hold project list when retrieved by AJAX -->
+<div id="project-list"></div>
+
 <main id="primary" class="site-main">
-    <div class="container">
-        <?php
-        if (have_posts()) :
-            while (have_posts()) :
+    <?php if (have_posts()) { ?>
+
+        <div id="project-list">
+
+            <?php
+            // Start the Loop.
+            while (have_posts()) {
                 the_post();
-        ?>
-                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                    <header class="entry-header">
-                        <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
-                    </header><!-- .entry-header -->
-
-                    <div class="entry-content">
-                        <?php
-                        the_content();
-                        ?>
-                    </div><!-- .entry-content -->
-                </article><!-- #post-<?php the_ID(); ?> -->
-
-            <?php endwhile;
-        else :
             ?>
-            <p><?php esc_html_e('No posts found.', 'custom-theme'); ?></p>
-        <?php endif; ?>
-    </div><!-- .container -->
+                <figure class="grid-item">
+                    <a href="<?php the_permalink() ?>">
+                        <?php the_post_thumbnail(array(285, 285)) ?>
+                        <figcaption class="caption"><span><?php the_title() ?></span></figcaption>
+                    </a>
+                </figure>
+
+            <?php
+            }
+            ?>
+        </div><!-- #project-list -->
+
+    <?php
+        // Previous/next page navigation.
+        the_posts_pagination(array(
+            'prev_text' => __('Previous', 'custom-theme'),
+            'next_text' => __('Next', 'custom-theme'),
+        ));
+    } else {
+
+        // If no content, include the "No posts found" template.
+        get_template_part('content', 'none');
+    }
+    ?>
+
 </main><!-- #primary -->
 
 <?php

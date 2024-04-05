@@ -17,7 +17,7 @@ get_header();
     <div id="project-list"></div>
 
     <main id="main" class="site-main">
-        <!-- Image -->
+
         <?php
         // Get the regular featured image
         $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
